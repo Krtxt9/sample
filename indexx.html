@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Style.Registration.css">
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="login.html" class="registration-form">
+            <h2 class="text-center custom-heading">Registration Form</h2>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email*</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password*</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name*</label>
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Enter your full name" required />
+            </div>
+            
+            <div class="mb-3">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" class="form-control" required onchange="calculateAge()" />
+            </div>
+
+            <div class="mb-3">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" class="form-control" readonly />
+            </div>
+
+
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
+                <select class="form-control" name="gender" id="gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="reset" class="btn btn-secondary btn-block">Clear</button>
+        </form>
+    </div>
+
+    <script>
+        function calculateAge() {
+    const birthdate = new Date(document.getElementById('birthdate').value);
+    const today = new Date();
+    let age = today.getFullYear() - birthdate.getFullYear();
+
+    if (
+        today.getMonth() < birthdate.getMonth() ||
+        (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())
+    ) {
+        age--;
+    }
+
+    document.getElementById('age').value = age;
+    }   
+    </script>
+</body>
+</html>
